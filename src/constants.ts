@@ -1,0 +1,1 @@
+export const imageAvatar = 'https://louisville.edu/enrollmentmanagement/images/person-icon/image';
