@@ -7,7 +7,9 @@ const ContactForm = () => {
   return (
     <>
       <h3>{params && params.id ? 'Edit' : 'Add new'} contact</h3>
-      <Form />
+      <Form
+        id={params ? params.id : null}
+      />
     </>
   );
 };
