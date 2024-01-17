@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createContact } from './contactThunks';
+import { createContact, fetchContacts } from './contactThunks';
 import { RootState } from '../../app/store';
 import { GetContact, PostContact } from '../../types';
 
@@ -37,6 +37,19 @@ export const contactSlice = createSlice({
     builder.addCase(createContact.rejected, state => {
       state.createLoading = false;
     });
+
+    builder.addCase(fetchContacts.pending, state => {
+      state.fetchLoading = true;
+    });
+    builder.addCase(fetchContacts.fulfilled, (state, {payload: contacts}) => {
+      state.fetchLoading = false;
+      state.contacts = contacts;
+    });
+    builder.addCase(fetchContacts.rejected, state => {
+      state.fetchLoading = false;
+    });
+
+
   },
 });
 
